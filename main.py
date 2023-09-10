@@ -15,7 +15,8 @@ meu_site.config['SECRET_KEY'] = "palavra-secreta-IFRO"
 @meu_site.route("/")       #se no navegador digitar / ou /index
 @meu_site.route("/index")  
 def indice():
-    return render_template ("t_index.html") #optei por prefixar com t_ os nomes dos arquivos que usam template
+    #return render_template ("t_index.html") #optei por prefixar com t_ os nomes dos arquivos que usam template
+    return redirect ('/login')
 
 @meu_site.route("/contato")
 def contato():
