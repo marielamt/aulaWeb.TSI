@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <!-- Toda vez que for trabalhar com Python dentro do HTML usa o bloco set
+        variáveis globais (set) 
+        variáveis locais (with) e (endwith)-->   
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        <div> 
+            <ul>
+            {% for msg in mensagens %}
+                <li>{{ msg }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form action="/autenticar"  method="POST">
+        <!-- ao clickar no botão OK, no submit vai para a rota /autenticar -->
+        <br/>
+        Usuário: <input type = "text" name="nome_usuario"><br/><br/>
+        Senha  : <input type = "text" name="senha"><br/><br/>
+        <button type = "submit">OK</button>
+    </form>
+
+{% endblock %}
+
