@@ -1,41 +1,16 @@
 {% extends 'base.html' %}
 
-<head>
-    <title>Login</title>
-    {% block scripts %}
-    <script>
-        function validarSenha() {
-            var password = document.getElementById("senha").value;
-
-            // Verificar o tamanho mínimo da senha
-            if (password.length < 8) {
-                alert("A senha deve ter pelo menos 8 caracteres");
-                return false;
-            }
-
-            // Verificar se a senha contém pelo menos 
-            var uppercaseRegex = /[A-Z]/; //Regex é como uma máscara
-            var numberRegex = /[0-9]/;
-            //uma letra maiúscula e um número
-            if (!uppercaseRegex.test(password) || !numberRegex.test(password)) {
-                alert("A senha deve conter pelo menos uma letra maiúscula e um número");
-                return false; // não passou na validação, retorna false 
-            }
-            return true; // o formulário será enviado para a rota /autenticar
-        }
-    </script>
-    {% endblock %}
-</head>
 
 {% block conteudo %}
+    <!--os meus scripts podem ser colocados no .html ou de forma externa
+        em arquivo com extensão .js na pasta/js e informar a sua referência no header -->
+ 
     <!-- chama o javascript para validarsenha -->
     <form action="/autenticar"  method="POST" onsubmit="return validarSenha()" >
         <!-- ao clickar no botão OK, no submit vai para a rota /autenticar -->
         <br/>
-        <!-- SUBSTITUIÇÃO
-        Usuário: <input type = "text" name="nome_usuario"><br/><br/>
-        Senha  : <input type = "text" name="senha"><br/><br/>
-        <button type = "submit">OK</button>  -->
+        <!-- se for usar button também pode chamar o js no evento onclick()
+        <button onclick ="return validarSenha()" >OK</button>  -->
 
         <!--qual a diferença em colocar label, type="password" e requires?? -->
         <label for="username">Usuário:</label>

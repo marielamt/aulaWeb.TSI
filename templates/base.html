@@ -5,8 +5,12 @@
   <head>
     <meta charset="utf-8">
     <title>Perfil do Usuário</title>
+
+     <!--os meus scripts podem ser colocados no .html ou de forma externa
+        em arquivo com extensão .js na pasta/js e informar a sua referência no header -->
+    <script src ="{{ url_for('static', filename = 'js/script.js')}}"></script> 
+
     <link rel = "stylesheet" href="{{ url_for('static', filename = 'css/estilo.css')}}">
-    {% block scripts %} {% endblock %}
   </head>
  
   <body>
@@ -21,7 +25,7 @@
         <a href="/contato">Contatos</a>
         <a href="/usuarios">Perfil do Usuário</a>
     </nav>
-    
+
     <!--Informação que muda nas páginas coloca como extensão -->
     {% block conteudo %}    
 

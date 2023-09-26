@@ -12,11 +12,10 @@ meu_site = Flask(__name__, template_folder='templates')
 meu_site.config['SECRET_KEY'] = "palavra-secreta-IFRO"
 
 
-@meu_site.route("/")       #se no navegador digitar / ou /index
-@meu_site.route("/index")  
+@meu_site.route("/index") 
 def indice():
-    #return render_template ("t_index.html") #optei por prefixar com t_ os nomes dos arquivos que usam template
-    return redirect ('/login')
+    return render_template ("t_index.html")
+
 
 @meu_site.route("/contato")
 def contato():
@@ -30,12 +29,11 @@ def usuarios (nome_usuario, nome_profissao):
     dados_usu = {"profissao": nome_profissao, "disciplina":"Desenvolvimento Web III"}
     return render_template ("t_usuario.html", nome=nome_usuario, dados = dados_usu)  
 
-    
-#new
+@meu_site.route("/")       #se no navegador digitar / ou /login
 @meu_site.route("/login")
 def login():
-    return render_template("t_login.html")
-    
+    return render_template("t_login.html")   
+  
 #new
 """++++
 Para poder recuperar os argumentos passados nos parâmetros na URL precisa importar o pacote
